@@ -139,7 +139,7 @@
             </button>
           </div>
           <div class="relative flex justify-between w-full">
-            <div class="mx-4 my-4 font-medium text-3xl">Dashboard</div>
+            <div class="mx-4 my-4 font-medium text-3xl">Fleet Management</div>
             <button type="button"
               class="inline-flex items-center px-3 py-2 font-medium transition ease-in-out duration-150">
               John Doe
