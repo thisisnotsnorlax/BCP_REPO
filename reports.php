@@ -1,3 +1,8 @@
+<?php
+  include "config.php";
+?>
+
+
 <html lang="en">
 
 <head>
@@ -13,7 +18,24 @@
   <link rel="stylesheet" href="login.css">
   <title>Dashboard</title>
 </head>
+    <!-- <style>
+      .wrapper { 
+        height: 100vh;
+        /* border: 2px solid orange; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
+      table { 
+        background-color: gray;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        padding: 3rem;
+        border-radius: 10px;
+      }
+    </style> -->
 <body>
   <div class="flex h-screen bg-[#fbfbfe]">
     <aside class="w-80 hidden md:flex md:flex-col border m-4 mr-0 rounded-lg overflow-hidden">
@@ -78,7 +100,7 @@
           <a class='flex relative my-1 w-full' href="coreoperation.php">
             <span class='w-4 rounded-xl absolute -left-2 h-full'>
             </span>
-            <p class='ml-8 flex w-full p-1 rounded-xl font-semibold text-[#004369] outline outline-gray-300 outline-1'>
+            <p class='ml-8 flex w-full p-1 rounded-xl font-semibold text-[#004369]  outline-1'>
               <span class="flex items-center gap-1 text-lg px-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -159,7 +181,7 @@
 
       <main class="mx-4 mb-4 mt-24 md:mt-0 flex flex-col gap-4">
 
-        <div class="flex gap-4 w-full">
+        <!-- <div class="flex gap-4 w-full">
           <div class="bg-gray-200 w-96 h-60 rounded-md shadow animate-pulse"></div>
           <div class="bg-gray-200 w-96 h-60 rounded-md shadow animate-pulse"></div>
 
@@ -177,7 +199,54 @@
         <div class="w-full flex gap-4">
           <div class="bg-gray-200 flex-1 w-auto h-60 rounded-md shadow animate-pulse"></div>
           <div class="bg-gray-200 flex-1 w-auto h-60 rounded-md shadow animate-pulse"></div>
-        </div>
+        </div> -->
+
+
+
+
+
+        <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                  Vendor ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                 Vendor Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Vendor Feedback
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                $show_reports = mysqli_query($conn, "SELECT * FROM `reports_tbl`") or die(mysqli_error($conn));
+                if(mysqli_num_rows($show_reports) > 0){
+                while($view = mysqli_fetch_assoc($show_reports)){   
+              ?>
+        
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <?php echo $view['vendor_id']; ?>
+                </th>
+                <td class="px-6 py-4">
+                    <?php echo $view['vendor_name']?>
+                </td>
+                <td class="px-6 py-4">
+                   <?php echo $view['vendor_feedback']?>
+                </td>
+            </tr>
+            <?php
+              }
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
 
 
 

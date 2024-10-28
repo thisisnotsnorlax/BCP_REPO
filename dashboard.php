@@ -1,3 +1,9 @@
+<?php
+    include "config.php";
+?>
+
+
+
 <html lang="en">
 
 <head>
@@ -7,8 +13,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <linkhref="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="login.css">
   <title>Dashboard</title>
@@ -78,7 +85,7 @@
           <a class='flex relative my-1 w-full' href="coreoperation.php">
             <span class='w-4 rounded-xl absolute -left-2 h-full'>
             </span>
-            <p class='ml-8 flex w-full p-1 rounded-xl font-semibold text-[#004369] outline outline-gray-300 outline-1'>
+            <p class='ml-8 flex w-full p-1 rounded-xl font-semibold text-[#004369]  outline-1'>
               <span class="flex items-center gap-1 text-lg px-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -156,29 +163,59 @@
 
 
       <!-- DITO KAYO MAG BAGO NG CONTENT -->
-
       <main class="mx-4 mb-4 mt-24 md:mt-0 flex flex-col gap-4">
 
-        <div class="flex gap-4 w-full">
-          <div class="bg-gray-200 w-96 h-60 rounded-md shadow animate-pulse"></div>
-          <div class="bg-gray-200 w-96 h-60 rounded-md shadow animate-pulse"></div>
+        <div class="flex gap-4 w-full ">
+          
+          <div class="bg-pink-400 w-96 h-60 rounded-md shadow  d-flex align-items-center justify-content-center fs-1 flex-column">
+            
+            <p class=" p-3">Total User</p>
+                <?php
+                  $user_count = "SELECT * FROM users_tbl";
+                  $count_execute = mysqli_query($conn, $user_count);
 
-          <div class="flex-1 flex flex-col gap-4">
-            <div class="bg-gray-300 w-auto h-28 rounded-md shadow animate-pulse"></div>
-            <div class="bg-gray-300 w-auto h-28 rounded-md shadow animate-pulse"></div>
+                  if($user_total = mysqli_num_rows($count_execute)) 
+                    {
+                    echo '<h1>'.$user_total.'</h1>';
+                    } elseif($user_total == 0){
+                        echo  '<h1>0</h1>';
+                    }
+                ?>
+
+          </div>
+          <div class="bg-orange-500 w-96 h-60 rounded-md shadow "></div>
+
+          <div class="bg-green-500 w-96 h-60 shadow rounded-md d-flex align-items-center justify-content-center flex-column fs-4">
+            <p class="fs-3">Pending Task</p>
+                <?php
+                    $pending_count = "SELECT * FROM pendingtask_tbl";
+                    $pending_execute = mysqli_query($conn, $pending_count);
+
+                    if($pending_total = mysqli_num_rows($pending_execute)) 
+                      {
+                      echo '<h1>'.$pending_total.'</h1>';
+                      } elseif($pending_total == 0){
+                          echo  '<h1>0</h1>';
+                      }
+                  ?>
+          </div>
+
+          <!-- <div class="flex-1 flex flex-col gap-4">
+            <div class="bg-gray-300 w-auto h-28 rounded-md shadow "></div>
+            <div class="bg-gray-300 w-auto h-28 rounded-md shadow "></div>
           </div>
         </div>
 
         <di class="flex mt-4 w-full gap-4">
-          <div class="bg-gray-200 w-3/4 h-72 rounded-md shadow animate-pulse"></div>
-          <div class="bg-gray-200 flex-1 w-auto h-72 rounded-md shadow animate-pulse"></div>
+          <div class="bg-gray-200 w-3/4 h-72 rounded-md shadow "></div>
+          <div class="bg-gray-200 flex-1 w-auto h-72 rounded-md shadow "></div>
         </di>
 
         <div class="w-full flex gap-4">
-          <div class="bg-gray-200 flex-1 w-auto h-60 rounded-md shadow animate-pulse"></div>
-          <div class="bg-gray-200 flex-1 w-auto h-60 rounded-md shadow animate-pulse"></div>
+          <div class="bg-gray-200 flex-1 w-auto h-60 rounded-md shadow "></div>
+          <div class="bg-gray-200 flex-1 w-auto h-60 rounded-md shadow "></div>
         </div>
-
+ -->
 
 
         <!-- NEW PAGE -->
@@ -191,6 +228,8 @@
 
   </div>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
