@@ -1,6 +1,6 @@
 <?php
 
-@include ("config.php");
+@include ("./connection/config.php");
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Redirect to dashboard
         echo '<script>
                   alert("Login successful");
-                  window.location.href = "dashboard.php";
+                  window.location.href = "./phpfile/layout.php";
               </script>';
     } else {
         echo '<script>

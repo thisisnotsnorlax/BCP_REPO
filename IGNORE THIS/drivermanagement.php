@@ -78,7 +78,7 @@
           <a class='flex relative my-1 w-full' href="coreoperation.php">
             <span class='w-4 rounded-xl absolute -left-2 h-full'>
             </span>
-            <p class='ml-8 flex w-full p-1 rounded-xl font-semibold text-[#004369] outline outline-gray-300 outline-1'>
+            <p class='ml-8 flex w-full p-1 rounded-xl font-semibold text-[#004369]  outline-1'>
               <span class="flex items-center gap-1 text-lg px-1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
